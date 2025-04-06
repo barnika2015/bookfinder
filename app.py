@@ -6,10 +6,11 @@ class Library:
 
     def import_books(self, filepath):
         with open(filepath, 'r') as file:
-            for line in file:
-                title, author, year = line.strip().split(',')
+            for index,line in enumerate(file):
+                print(index,line.strip())
+                title, author, year, publisher = line.strip().split(',')
          ##       self.books.append(Book(title, author, int(year)))
-                book = Book(title, author, int(year))
+                book = Book(title, author, int(year), publisher)
                 self._db.add_book(book)
                 print(f"Book added to database: {book}")
 

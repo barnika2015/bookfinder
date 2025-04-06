@@ -17,6 +17,6 @@ class Database:
             ]
         }
         for result in self._collection.find(find_term):
-            yield Book(result['title'], result['author'], result['year'])
+            yield Book(result['title'], result['author'], result['year'], result['publisher'])
     
     
