@@ -1,26 +1,5 @@
 from database import Database  
-
-
-class Book:
-    def __init__(self, title, author, year):
-        self.title = title
-        self.author = author
-        self.year = year
-
-
-    def __str__(self):
-        return f"{self.title} by {self.author} ({self.year})"
-    
-    def __repr__(self):
-        return f"Book({self.title}, {self.author}, {self.year})"
-    
-    def as_dict(self):
-        return {
-            "title": self.title,
-            "author": self.author,
-            "year": self.year
-        }
-    
+from book import Book
 class Library:
     def __init__(self):
         self._db = Database()
@@ -40,18 +19,11 @@ class Library:
     
     def search_books(self, search_term):
         found=[]
-        #for book in self.books:
-            # if search_term.lower() in book.title.lower() or search_term.lower() in book.author.lower():
-            #     found.append(book)
-        
-        db_found = self._db.find_book(search_term)
-        if db_found:
-            found.append(Book(db_found['title'], db_found['author'], db_found['year']))
+        for book in self._db.find_books(search_term):
+            found.append(book)
         return found
 
-MyLibrary = Library()
-MyLibrary.import_books('books.csv') 
-
+           
 
 
 if __name__ == "__main__":
