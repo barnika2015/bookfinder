@@ -4,7 +4,7 @@ import { data } from 'react-router-dom';
 
 function Search() {
   const [query, setQuery] = useState('');
-  const [results, setResults] = useState('');
+  const [results, setResults] = useState([]);
 
   useEffect(() => {
     if (query) {
@@ -16,11 +16,12 @@ function Search() {
       .then(data => {
         setResults(data.results);
         console.log(data.results);
-      })
+      }
+    )
 
         .catch(error => console.error('Error fetching data:', error));
     } else {
-      setResults('');
+      setResults([]);
     }
   }, [query]);
 
@@ -35,7 +36,12 @@ function Search() {
         value={query}
         onChange={e => setQuery(e.target.value)}
       />
-      <p>{results}</p>
+      {/* <p>{results}</p> */}
+      <ul>
+        {results.map((result, index) => (
+          <li key={index}>{result}</li>
+        ))}
+      </ul>
       
     </div>
     

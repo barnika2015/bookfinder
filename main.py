@@ -41,5 +41,5 @@ async def search_books(search_term: str):
     print(f"Searching for books with term: {search_term}")
     library = Library()
     results = library.search_books(search_term)
-    return {"search_term": search_term, "results": str([str(book) for book in results])}
+    return {"search_term": search_term, "results": [str(book) for book in results]}
 
