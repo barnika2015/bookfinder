@@ -19,20 +19,17 @@ class Library:
     
     def search_books(self, search_term):
         found=[]
+        if not search_term:
+            return found
         for book in self._db.find_books(search_term):
             found.append(book)
         return found
 
            
 
-
 if __name__ == "__main__":
     library = Library()
-    library.import_books('books.csv')
-    print("Books in the library:")
-    for book in library.list_books():
-        print(book)
-    print("\nSearch for 'Vinci':")
-    for book in library.search_books('Vinci'):
-        print(book)
+    library.import_books('books.csv') 
+
+
 
