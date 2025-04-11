@@ -17,7 +17,7 @@ docker run --name mongodb -p 27017:27017 -d mongodb/mongodb-enterprise-server:la
 python app.py
 ```
 
-5. Run the Flask app
+5. Run the Fast API app
 ```bash
 fastapi dev main.py
 ```
