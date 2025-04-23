@@ -19,7 +19,7 @@ python app.py
 
 5. Run the Fast API app
 ```bash
-fastapi dev main.py
+fastapi dev application.py
 ```
 
 6. From a different cmd go inside my-book-finder directory and run the following command to start the React app:
